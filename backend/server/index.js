@@ -10,7 +10,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const tasksRoute = require('./routes/api/tasks');
+const authRoute = require('./routes/api/auth');
 app.use('/api/tasks', tasksRoute);
+app.use('/api/user', authRoute);
 
 // DB connection
 const mongoURL = 'mongodb://localhost:27017/tasks';

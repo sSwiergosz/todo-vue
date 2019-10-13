@@ -7,6 +7,7 @@ const router = express.Router();
 router.get('/', async(req, res) => { //this '/' points to '/api/tasks' because of variable tasks in server/index.js !
   try {
     const tasks = await Task.find();
+    console.log(Task.find())
     res.json(tasks);
   } catch (err) {
     res.json({message: err});
