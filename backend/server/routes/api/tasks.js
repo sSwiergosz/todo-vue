@@ -1,13 +1,13 @@
 const express = require('express');
 const Task = require('../../../models/Task');  
+const verify = require('./verifyToken');
 
 const router = express.Router();
 
 // GET TASKS
-router.get('/', async(req, res) => { //this '/' points to '/api/tasks' because of variable tasks in server/index.js !
+router.get('/', verify, async(req, res) => { //this '/' points to '/api/tasks' because of variable tasks in server/index.js !
   try {
     const tasks = await Task.find();
-    console.log(Task.find())
     res.json(tasks);
   } catch (err) {
     res.json({message: err});
